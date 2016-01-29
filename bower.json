@@ -1,0 +1,33 @@
+{
+  "name": "dominus",
+  "version": "0.1",
+  "homepage": "https://github.com/Myloth/dominus",
+  "authors": [
+    "Joel Asensi <asensijoel@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.5",
+    "ckeditor": "4",
+    "jquery": "1.11.1",
+    "moment": "2.10.3",
+    "zTree_v3": "git@github.com:zTree/zTree_v3.git#3.5.18",
+    "select2": "4.0.*",
+    "bootbox.js": "^4.4.0",
+    "bootstrap-datepicker": "^1.4.0",
+    "typeahead.js": "^0.11.1",
+    "bootstrap-star-rating": "v3.5.3",
+    "eonasdan-bootstrap-datetimepicker": "4.14.30",
+    "html.sortable": "~0.2.9"
+  },
+  "resolutions": {
+    "jquery": "1.11.1"
+  }
+}
