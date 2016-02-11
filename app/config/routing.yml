@@ -4,19 +4,16 @@ dominus_front:
 
 dominus_back:
     resource: "@DominusBackBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 dominus_api:
     resource: "@DominusApiBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /api
 
 dominus_model:
     resource: "@DominusModelBundle/Resources/config/routing.yml"
     prefix:   /
 
-model:
-    resource: "@ModelBundle/Resources/config/routing.yml"
-    prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

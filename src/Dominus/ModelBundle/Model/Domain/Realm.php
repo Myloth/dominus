@@ -1,86 +1,97 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: joel
- * Date: 08/02/16
- * Time: 13:25
- */
 
 namespace Dominus\ModelBundle\Model\Domain;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as Serializer;
+use JMS\Serializer\Annotation as JMS;
+use Dominus\ModelBundle\Entity\User\User;
+use Dominus\ModelBundle\Entity\Domain\Ruler;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class Realm
- * @package Dominus\ModelBundle\Model\Domain
+ * Class Realm.
  *
- * @ORM\Entity()
- * @ORM\Table(name="domain__realm")
- * @Serializer\ExclusionPolicy("all")
+ * @ORM\MappedSuperclass
+ * @JMS\ExclusionPolicy("all")
  */
-class Realm
+abstract class Realm
 {
-
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
-     * @Serialiser\Expose
-     * @Serializer\Type("integer")
+     * @JMS\Expose
+     * @JMS\Type("integer")
      */
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Dominus\ModelBundle\Entity\User\User", cascade={"persist", "delete"}, mappedBy="realm")
-     * @Serializer\Expose
-     * @Serializer\Type("Dominus\ModelBundle\Entity\User\User")
+     * @var User
+     *
+     * @ORM\OneToOne(targetEntity="Dominus\ModelBundle\Entity\User\User", cascade={"persist", "remove"}, mappedBy="realm")
+     * @JMS\Expose
+     * @JMS\Type("Dominus\ModelBundle\Entity\User\User")
      */
     protected $user;
 
     /**
-     * @ORM\Column(type="string", length="255")
-     * @Serializer\Expose
-     * @Serializer\Type("string")
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     * @JMS\Expose
+     * @JMS\Type("string")
      */
     protected $name;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=4000)
-     * @Serializer\Expose
-     * @Serializer\Type("string")
+     * @JMS\Expose
+     * @JMS\Type("string")
      */
     protected $background;
 
     /**
-     * @ORM\OneToOne(targetEntity="Dominus\ModelBundle\Entity\Domain\Ruler", mappedBy="realm", cascade={"persist", "delete"})
-     * @Serializer\Expose
-     * @Serializer\Type("Dominus\ModelBundle\Entity\Domain\Ruler")
+     * @var Ruler
+     *
+     * @ORM\OneToOne(targetEntity="Dominus\ModelBundle\Entity\Domain\Ruler", mappedBy="realm", cascade={"persist", "remove"})
+     * @JMS\Expose
+     * @JMS\Type("Dominus\ModelBundle\Entity\Domain\Ruler")
      */
     protected $ruler;
 
     /**
-     * @ORM\OneToMany(targetEntity="Dominus\ModelBundle\Entity\Domain\RealmResources", mappedBy="realm", cascade={"persist", "delete"})
-     * @Serializer\Expose
-     * @Serializer\Type("ArrayCollection<Dominus\ModelBundle\Entity\Environment\Resources>")
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Dominus\ModelBundle\Entity\Domain\RealmResources", mappedBy="realm", cascade={"persist", "remove"})
+     * @JMS\Expose
+     * @JMS\Type("ArrayCollection<Dominus\ModelBundle\Entity\Environment\Resources>")
      */
     protected $resources;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
-     * @Serializer\Expose
-     * @Serializer\Type("integer")
+     * @JMS\Expose
+     * @JMS\Type("integer")
      */
     protected $prestige;
 
     /**
-     * @ORM\OneToMany(targetEntity="Dominus\ModelBundle\Entity\Domain\City", mappedBy="realm", cascade={"persist", "delete"})
-     * @Serializer\Expose
-     * @Serializer\Type("ArrayCollection<Dominus\ModelBundle\Entity\Domain\City>")
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Dominus\ModelBundle\Entity\Domain\City", mappedBy="realm", cascade={"persist", "remove"})
+     * @JMS\Expose
+     * @JMS\Type("ArrayCollection<Dominus\ModelBundle\Entity\Domain\City>")
      */
     protected $cities;
 
     /**
+     * @var Dominus\ModelBundle\Entity\Domain\Era
+     *
      * @ORM\ManyToOne(targetEntity="Dominus\ModelBundle\Entity\Domain\Era")
      * @ORM\JoinColumn(name="era_id", referencedColumnName="id")
      */

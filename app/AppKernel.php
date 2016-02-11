@@ -14,13 +14,14 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Dominus\ModelBundle\DominusModelBundle(),
             new Dominus\ApiBundle\DominusApiBundle(),
             new Dominus\BackBundle\DominusBackBundle(),
             new Dominus\FrontBundle\DominusFrontBundle(),
-            new \FOS\UserBundle\FOSUserBundle(),
-            new \JMS\SerializerBundle\JMSSerializerBundle()
+            new FOS\UserBundle\FOSUserBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -28,6 +29,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new \Nelmio\ApiDocBundle\NelmioApiDocBundle();
         }
 
         return $bundles;

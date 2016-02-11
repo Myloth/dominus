@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * Class Ruler.
+ * Class Era.
  *
  * @ORM\MappedSuperclass
  * @JMS\ExclusionPolicy("all")
  */
-abstract class Ruler
+abstract class Era
 {
     /**
      * @var int
@@ -32,13 +32,4 @@ abstract class Ruler
      * @JMS\Type("string")
      */
     protected $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=4000)
-     * @JMS\Expose
-     * @JMS\Type("string")
-     */
-    protected $background;
 }
