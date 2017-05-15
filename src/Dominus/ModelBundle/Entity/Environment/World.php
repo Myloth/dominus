@@ -2,7 +2,6 @@
 
 namespace Dominus\ModelBundle\Entity\Environment;
 
-use Dominus\ModelBundle\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Dominus\ModelBundle\Model\Environment\World as BaseWorld;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,8 +12,24 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="environment__world")
  */
-class World extends BaseWorld
+class World
 {
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Dominus\ModelBundle\Entity\Environment\Region", mappedBy="world")
+     */
+    protected $regions;
+
     public function __construct()
     {
         $this->regions = new ArrayCollection();
@@ -34,24 +49,6 @@ class World extends BaseWorld
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param User $user
-     */
-    public function setUser(User $user)
-    {
-        $this->user = $user;
 
         return $this;
     }

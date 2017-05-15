@@ -26,11 +26,11 @@ abstract class AbstractFixture extends BaseAbstractFixture implements OrderedFix
 
         $data = $this->getData();
 
-        if("dev" == $kernel->getEnvironment()) {
+        if ("dev" == $kernel->getEnvironment()) {
             $data = array_merge($data, $this->getDevData());
         }
 
-        foreach($data as $key => $line) {
+        foreach ($data as $key => $line) {
             $entity = $this->buildObject($line);
 
             $manager->persist($entity);

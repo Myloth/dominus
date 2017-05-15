@@ -1,4 +1,13 @@
 services:
-#    dominus_back.example:
-#        class: Dominus\BackBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    dominus.back.abstract_service:
+        abstract: true
+        class: Dominus\BackBundle\Service\AbstractService
+        arguments:
+            - "@knp_paginator"
+
+    dominus.back.service.user:
+        parent: dominus.back.abstract_service
+        class: Dominus\BackBundle\Service\User\UserService
+        arguments:
+            - "@=service('doctrine').getRepository('ModelBundle:User\User')"
+

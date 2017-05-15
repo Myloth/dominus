@@ -19,9 +19,10 @@ class AppKernel extends Kernel
             new Dominus\ModelBundle\DominusModelBundle(),
             new Dominus\ApiBundle\DominusApiBundle(),
             new Dominus\BackBundle\DominusBackBundle(),
-            new Dominus\FrontBundle\DominusFrontBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

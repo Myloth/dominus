@@ -2,17 +2,37 @@
 
 namespace Dominus\ModelBundle\Entity\Environment;
 
-use Dominus\ModelBundle\Model\Environment\Region as BaseRegion;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Region.
  *
  * @ORM\Entity
  * @ORM\Table(name="environment__region")
+ * @JMS\ExclusionPolicy("all")
  */
-class Region extends BaseRegion
+class Region
 {
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     * @JMS\Expose
+     * @JMS\Type("integer")
+     */
+    protected $id;
+
+    /**
+     * @var Dominus\ModelBundle\Entity\Environment\World
+     *
+     * @ORM\ManyToOne(targetEntity="Dominus\ModelBundle\Entity\Environment\World", inversedBy="regions")
+     * @ORM\JoinColumn(name="world_id", referencedColumnName="id")
+     */
+    protected $world;
+
+
     /**
      * @return int
      */
@@ -49,26 +69,6 @@ class Region extends BaseRegion
     public function setWorld(World $world)
     {
         $this->world = $world;
-
-        return $this;
-    }
-
-    /**
-     * @return Map
-     */
-    public function getMap()
-    {
-        return $this->map;
-    }
-
-    /**
-     * @param Map $map
-     *
-     * @return Region
-     */
-    public function setMap(Map $map)
-    {
-        $this->map = $map;
 
         return $this;
     }

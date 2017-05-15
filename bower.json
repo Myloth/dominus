@@ -25,7 +25,10 @@
     "typeahead.js": "^0.11.1",
     "bootstrap-star-rating": "v3.5.3",
     "eonasdan-bootstrap-datetimepicker": "4.14.30",
-    "html.sortable": "~0.2.9"
+    "html.sortable": "~0.2.9",
+    "toastr": "~2.1.2",
+    "fontawesome": "4.2.*",
+    "knockoutjs": "~v3.4.2"
   },
   "resolutions": {
     "jquery": "1.11.1"

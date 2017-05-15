@@ -8,13 +8,6 @@ use Dominus\ModelBundle\Entity\User\User;
 
 class LoadUserData extends AbstractFixture
 {
-    protected function getData()
-    {
-        return [
-            "admin-user" => ['admin', 'test', 'test@example.com']
-        ];
-    }
-
     /**
      * Get the order of this fixture
      *
@@ -24,6 +17,27 @@ class LoadUserData extends AbstractFixture
     {
         return 1;
     }
+
+    /**
+     * @return array
+     */
+    protected function getData()
+    {
+        return [
+            "admin-user" => ['admin', 'test', 'test@example.com'],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getDevData()
+    {
+        return [
+            'player' => ['Myloth', 'password', 'asensijoel@gmail.com'],
+        ];
+    }
+
     /**
      * @param array $data
      * @return mixed

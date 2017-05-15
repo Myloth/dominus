@@ -1,0 +1,20 @@
+<div id="heroTab">
+    <div id="heroList">
+        <ul data-bind="foreach: heroes">
+            <li data-bind="click: $root.selectHero(), attr:{data-hero-id: id}" >
+                <div class="thumbnail" data-bind="html: thumbnail"></div>
+                <div>
+                    <h3 class="name" data-bind="text: name"></h3>
+                    <span class="level" data-bind="text: level"></span>
+                    <p class="className" data-bind="text: className"></p>
+                    <p class="roleName" data-bind="text: roleName"></p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div id="heroDetail" data-bind="with: currentHero">
+
+    </div>
+</div>
