@@ -1,0 +1,9 @@
+fos_user:
+    service:
+        mailer: fos_user.mailer.twig_swift
+    db_driver: orm
+    firewall_name: main
+    user_class: Dominus\ModelBundle\Entity\User\User
+    from_email:
+        address: admin@dominus.com
+        sender_name: Admin
