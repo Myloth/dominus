@@ -1,3 +1,0 @@
-dominus_api_homepage:
-    path:     /
-    defaults: { _controller: DominusApiBundle:Default:index }

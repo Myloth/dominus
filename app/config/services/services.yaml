@@ -1,0 +1,8 @@
+services:
+  App\Service\User\RoleService:
+    arguments:
+      $repository: '@=service("doctrine").getRepository("App\\Entity\\User\\Role")'
+
+  App\Service\User\GroupService:
+    arguments:
+      $repository: '@=service("doctrine").getRepository("App\\Entity\\User\\Group")'

@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  php-fpm:
+    container_name: php
+    build:
+      context: ./docker/php
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./app:/var/www/dominus
+    depends_on:
+      - mysql
+    environment:
+      SYMFONY_ENV: dev
+      INIT_XDEBUG_ACTIVATED: 0
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: dominus_admin
+      MYSQL_PASSWORD: dominus_admin
+      MYSQL_DATABASE: dominus
+    ports:
+      - '4306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  nginx:
+    container_name: nginx
+    image: nginx:stable-alpine
+    ports:
+      - '80:80'
+    volumes:
+      - ./app:/var/www/dominus
+      - ./docker/nginx/dominus.conf:/etc/nginx/conf.d/dominus.conf
+    depends_on:
+      - php-fpm
+      - mysql
+
+volumes:
+  mysql-data:
+    driver: local

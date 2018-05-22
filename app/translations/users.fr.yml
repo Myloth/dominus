@@ -1,0 +1,20 @@
+user:
+  new:
+    title: Nouvel utilisateur
+  listing:
+    title: Liste des utilisateurs
+    button:
+      add: Ajouter
+    header:
+      nickname: Nom d'utilisateur
+      email: Email
+      roles: Rôle
+      canConnect: Peut se connecter
+      actions: Actions
+
+form:
+  label:
+    userType: Type d'utilisateur
+    username: Nom d'utilisateur
+    email: Email
+    groups: Groupe
