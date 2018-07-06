@@ -2,9 +2,9 @@
 
 namespace App\Command;
 
-use App\Manager\MapManager;
-use App\Service\MapGeneratorService;
-use App\Service\PerlinNoiseService;
+
+use App\Service\Utils\MapGeneratorService;
+use App\Service\Utils\PerlinNoiseService;
 use App\Service\Utils\DiamondSquareMap\HeightMapGenerator;
 use App\Service\Utils\RainMap\Map;
 use App\Service\Utils\SimplexNoise\SimplexNoiseLazyService;

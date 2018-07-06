@@ -2,8 +2,10 @@
 
 namespace App\Entity\Domain;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\User\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class Guild
@@ -49,6 +51,21 @@ class Guild
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Domain\GuildRoom", mappedBy="guild", cascade={"persist", "remove"})
+     */
+    protected $rooms;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rooms = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -99,7 +116,7 @@ class Guild
     }
 
     /**
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return Guild
      */
@@ -146,6 +163,26 @@ class Guild
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getRooms(): ArrayCollection
+    {
+        return $this->rooms;
+    }
+
+    /**
+     * @param GuildRoom $room
+     *
+     * @return Guild
+     */
+    public function addRoom(GuildRoom $room): Guild
+    {
+        $this->rooms->add($room);
 
         return $this;
     }

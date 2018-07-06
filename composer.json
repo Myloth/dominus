@@ -10,6 +10,7 @@
         "friendsofsymfony/user-bundle": "^2.1",
         "jms/serializer-bundle": "^2.3",
         "knplabs/knp-paginator-bundle": "^2.8",
+        "overblog/graphql-bundle": "^0.11.7",
         "phpunit/phpunit": "^6.5",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^5.1",
@@ -28,12 +29,13 @@
         "symfony/validator": "^3.4"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "nelmio/api-doc-bundle": "^3.2",
+        "overblog/graphiql-bundle": "^0.1.1",
+        "symfony/debug-bundle": "^3.4",
         "symfony/dotenv": "^3.4",
         "symfony/maker-bundle": "^1.5",
-        "doctrine/doctrine-fixtures-bundle": "^3.0",
-        "symfony/profiler-pack": "^1.0",
-        "symfony/debug-bundle": "^3.4",
-        "nelmio/api-doc-bundle": "^3.2"
+        "symfony/profiler-pack": "^1.0"
     },
     "autoload": {
         "psr-4": {

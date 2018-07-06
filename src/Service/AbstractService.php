@@ -4,6 +4,7 @@ namespace App\Service;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\ORMException;
 
 /**
  * Class AbstractService
@@ -58,6 +59,17 @@ abstract class AbstractService
     public function findOneBy($parameters, $sort)
     {
         return $this->getRepository()->findOneBy($parameters, $sort);
+    }
+
+    /**
+     * @param \object $entity
+     *
+     * @throws ORMException
+     */
+    public function save($entity)
+    {
+        $this->em->persist($entity);
+        $this->em->flush($entity);
     }
 
     /**

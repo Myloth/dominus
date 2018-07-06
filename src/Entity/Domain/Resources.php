@@ -5,37 +5,43 @@ namespace App\Entity\Domain;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Bonus
+ * Class Resources
  *
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(
- *     name="domain__bonus"
+ *     name="domain_resources"
  * )
  */
-class Bonus
+class Resources
 {
-    const CHARACTERS = 'CHARACTERS';
-    const JOB        = 'JOB';
+    const RESSOURCE_CREDITS = 'CREDITS';
+    const RESSOURCE_FOOD    = 'FOOD';
 
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="smallint", options={"unsigned": true})
      */
     protected $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=50)
      */
     protected $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=50)
      */
     protected $code;
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -43,9 +49,9 @@ class Bonus
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      *
-     * @return Bonus
+     * @return Resources
      */
     public function setId($id)
     {
@@ -55,7 +61,7 @@ class Bonus
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -63,9 +69,9 @@ class Bonus
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      *
-     * @return Bonus
+     * @return Resources
      */
     public function setName($name)
     {
@@ -75,7 +81,7 @@ class Bonus
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCode()
     {
@@ -83,9 +89,9 @@ class Bonus
     }
 
     /**
-     * @param mixed $code
+     * @param string $code
      *
-     * @return Bonus
+     * @return Resources
      */
     public function setCode($code)
     {

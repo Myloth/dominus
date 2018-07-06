@@ -48,6 +48,21 @@ class RoomFixtures extends AbstractFixture
                 1,
                 5,
             ],
+            'room-hospital' => [
+                4,
+                'Hopital',
+                'Soigne les aventuriers blessés',
+                1,
+                5
+            ],
+            'room-cantina' => [
+                5,
+                'Cuisine',
+                'Fournis les provisions nécessaires au lancement d\'expéditions',
+                1,
+                5
+            ],
+
         ];
     }
 
