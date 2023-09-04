@@ -62,9 +62,8 @@ class LoadUserData extends AbstractFixture
         $user = (new User())
             ->setUsername($data[0])
             ->setEmail($data[2])
-            ->setPlayerStats(new PlayerStats())
             ->setGroups([$this->getReference($data[3])])
-            ->setCanConnect($data[4])
+            ->setActive($data[4])
         ;
 
         $hashedPassword = $this->passwordHasher->hashPassword($user, $data[1]);

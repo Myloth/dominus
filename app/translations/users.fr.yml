@@ -1,6 +1,16 @@
 user:
   new:
     title: Nouvel utilisateur
+    submit: Ajouter
+    card:
+      header: Informations de l'utilisateur
+  edit:
+    title: Edition de l'utilisateur
+    submit: Enregistrer
+    button:
+      api:
+        generate_token: Générer le token de connection
+        generate_key: Régénérer la clé secrète
   listing:
     title: Liste des utilisateurs
     button:
@@ -9,7 +19,7 @@ user:
       nickname: Nom d'utilisateur
       email: Email
       roles: Rôle
-      canConnect: Peut se connecter
+      active: Compte actif
       actions: Actions
 
 form:
@@ -18,3 +28,6 @@ form:
     username: Nom d'utilisateur
     email: Email
     groups: Groupe
+    password: Mot de passe
+    active: Compte actif
+    salt: Clé secrète

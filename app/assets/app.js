@@ -10,6 +10,7 @@
 
 //import $ from 'jquery' DOESN'T WORK
 const $ = require('jquery');
+
 import 'bootstrap';
 import 'select2';
 
@@ -17,6 +18,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './styles/sb-admin-2.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'select2/src/scss/core.scss';
+import Routing from 'fos-router';
+
+const routes = require("../public/js/routes.json");
+Routing.setRoutingData(routes);
+
+export default Routing;
 
 // start the Stimulus application
 import './controllers/sb-admin-2.js';

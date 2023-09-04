@@ -2,34 +2,21 @@
 
 namespace App\Entity\User;
 
-use App\Entity\Statistics\PlayerStats;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
+ * @ORM\Entity()
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User extends AbstractUser implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=180, unique=true, nullable=true)
      */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $username;
-
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
+    private string|null $email;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User\Group")
@@ -42,42 +29,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $password;
-
-    /**
-     * If this user can be used to log in the administration
-     *
-     * @var string
-     * @ORM\Column(type="boolean")
-     */
-    private $canConnect = 0;
-
-    /**
-     * Hashed string used to generate an api connection token.
-     *
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $salt;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
+    private string $password;
 
     /**
      * A visual identifier that represents this user.
@@ -135,7 +89,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @param User $email
+     * @param string $email
      *
      * @return User
      */
@@ -156,25 +110,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return PlayerStats
-     */
-    public function getPlayerStats(): PlayerStats
-    {
-        return $this->playerStats;
-    }
-
-    /**
-     * @param PlayerStats $playerStats
-     *
-     * @return User
-     */
-    public function setPlayerStats(PlayerStats $playerStats): User
-    {
-        $this->playerStats = $playerStats;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getGroups()
@@ -190,25 +125,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGroups($groups)
     {
         $this->groups = $groups;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCanConnect(): string
-    {
-        return $this->canConnect;
-    }
-
-    /**
-     * @param string $canConnect
-     *
-     * @return User
-     */
-    public function setCanConnect(string $canConnect): User
-    {
-        $this->canConnect = $canConnect;
 
         return $this;
     }
@@ -216,20 +132,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return string
      */
-    public function getSalt(): string
+    public function getType(): string
     {
-        return $this->salt;
-    }
-
-    /**
-     * @param string $salt
-     *
-     * @return User
-     */
-    public function setSalt(string $salt): User
-    {
-        $this->salt = $salt;
-
-        return $this;
+        return self::USER_TYPE_USER;
     }
 }

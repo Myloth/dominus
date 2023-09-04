@@ -15,6 +15,16 @@ services:
       SYMFONY_ENV: dev
       INIT_XDEBUG_ACTIVATED: 0
 
+  node:
+    image: "node:21"
+    working_dir: "/home/node/app"
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - ./app:/home/node/app
+    tty: true
+    stdin_open: true
+
   mysql:
     image: mysql:8.0
     environment:
